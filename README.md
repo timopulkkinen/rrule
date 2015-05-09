@@ -352,7 +352,7 @@ documentation.
 ##### `RRule.prototype.toString()`
 
 Returns a string representation of the rule as per the iCalendar RFC.
-Only properties explicitely specified in `options` are included:
+Only properties explicitly specified in `options` are included:
 
 ```javascript
 rule.toString();
@@ -455,7 +455,10 @@ var rule = new RRule(options)
 * * * * *
 
 ### Changelog
-
+* 2.1.0-dev
+    * Added Millisecond precision
+        * millisecond offset extracted from dtstart (dtstart.getTime()%1000)
+        * each reccurence is returned with the same offset
 * 2.1.0
    * Removed dependency on Underscore.js (thanks @gsf).
    * Various small bugfixes and improvements.
@@ -471,7 +474,7 @@ var rule = new RRule(options)
         (use `RRule.parseString` and modify `options` manually instead).
       * `today` argument removed from `Rule.prototype.toText`
         (never actually used).
-      * `rule.toString()` now includes `DTSTART` (if explicitely specified
+      * `rule.toString()` now includes `DTSTART` (if explicitly specified
         in `options`).
       * Day constants `.clone` is now `.nth`, eg. `RRule.FR.nth(-1)`
         (last Friday).

@@ -1,6 +1,6 @@
 Package.describe({
   name: 'aramk:rrule',
-  version: '2.1.0',
+  version: '2.1.1-dev',
   git: 'https://github.com/aramk/rrule#master',
   summary: "JavaScript library for working with recurrence rules for calendar dates."
 });
