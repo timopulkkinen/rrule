@@ -47,6 +47,11 @@ $ npm install rrule
 var RRule = require('rrule').RRule;
 ```
 
+#### Meteor
+
+```bash
+$ meteor add aramk:rrule```
+
 #### Usage
 
 ```javascript
