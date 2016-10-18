@@ -35,7 +35,7 @@
         "mocha": "^1.21.5",
         "requirejs": "~2.1.11",
         "shelljs": "^0.3.0",
-        "tz-date": "git+https://github.com/aramk/tz-date.git#v0.2.2"
+        "tz-date": "git://github.com/timopulkkinen/tz-date.git#master"
     },
     "scripts": {
         "test": "grunt test"
