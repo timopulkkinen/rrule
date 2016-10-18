@@ -36,6 +36,31 @@ describe 'RRule', ->
     expect(_.first(dates).toString()).to.equal('Fri Jun 12 2015 11:14:42 GMT+1000 (AEST)')
     expect(_.last(dates).toString()).to.equal('Fri Jan 01 2016 11:14:42 GMT+1100 (AEDT)')
 
+  it 'can display complex rules in nlp', ->
+    recurrence = 'WKST=MO;FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA;BYWEEKNO=1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53;INTERVAL=1;BYHOUR=10;BYMINUTE=0;DTSTART=20161004T210000Z;TIMEZONE=Europe/Helsinki'
+
+    rule = DateUtils.createRRuleFromString(recurrence)
+    expect(rule.toString() == recurrence)
+    expect(rule.isFullyConvertibleToText())
+
+    console.log("NLP result:", rule.toText())
+
+    recurrence = 'WKST=MO;FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA;INTERVAL=1;BYHOUR=10;BYMINUTE=0;DTSTART=20161004T210000Z;TIMEZONE=Europe/Helsinki'
+
+    rule = DateUtils.createRRuleFromString(recurrence)
+    expect(rule.toString() == recurrence)
+    expect(rule.isFullyConvertibleToText())
+
+    console.log("NLP result:", rule.toText())
+
+
+    recurrence = 'WKST=MO;FREQ=MONTHLY;INTERVAL=1;BYHOUR=10;BYMINUTE=0;DTSTART=20161004T210000Z;TIMEZONE=Europe/Helsinki'
+
+    rule = DateUtils.createRRuleFromString(recurrence)
+    expect(rule.toString() == recurrence)
+    expect(rule.isFullyConvertibleToText())
+
+    console.log("NLP result:", rule.toText())
 
 
 
@@ -65,7 +90,6 @@ DateUtils =
   createRRuleFromString: (str, args) ->
     if str instanceof RRule then str = str.toString()
     rule = RRule.fromString(str)
-    console.log('TEST: rrule from string', rule)
     # Additional args may not be serialized, so apply them and clone again.
     _.defaults rule.origOptions, @_getRRuleArgs()
     _.extend rule.origOptions, args
